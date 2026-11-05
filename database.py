@@ -3,7 +3,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 # For SQLite database, use the following URL format:
-SQLALCHEMY_DATABASE_URL = "sqlite:///./todosapp.db"
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./todosapp.db"
+
+# For PostgreSQL database, use the following URL format:
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres.jvlxledtccuznmoivrlh:787AdminNazrul@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
 
 #For PostgreSQL database, use the following URL format:
 # SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:password@localhost/TodosApplicationDatabase"
