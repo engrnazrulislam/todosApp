@@ -116,10 +116,9 @@ def delete_todo(user: user_dependency,db: db_dependency, todo_id: int):
 def get_user(user:user_dependency, db: db_dependency):
     if user is None:
         raise HTTPException(status_code=401, detail="Authentication required")
-
-    user_profile_data = db.query(Users).filter(Users.id==user.get('id')).first()
+    print(user)
+    return db.query(Users).filter(Users.id==user.get('id')).first()
     
-    return user_profile_data
 
 @app.put("/edit_profile")
 def editProfile(user: user_dependency, db: db_dependency, updateUser: UpdateUsers):

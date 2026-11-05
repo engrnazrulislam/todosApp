@@ -26,9 +26,7 @@ user_dependency = Annotated[dict, Depends(get_current_user)]
 def read_all_todos(user:user_dependency,db: db_dependency):
     if user is None or user.get('role') != 'admin':
         raise HTTPException(status_code=401, detail="Authentication required or it is not an admin user")
-
     todos = db.query(Todos).all()
-    
     return todos
 
 
@@ -37,11 +35,8 @@ def delete_todo_by_admin(user: user_dependency,db: db_dependency, todo_id: int):
     todo = db.query(Todos).filter(Todos.id == todo_id).first()
     if todo is None or user.get('role') != 'admin':
         raise HTTPException(status_code=404, detail="Todo not found")
-    
     db.query(Todos).filter(Todos.id == todo_id).delete()
-        
     db.commit()
-    
     return JSONResponse(status_code=200, content={"message": "Todo deleted successfully"})
 
 @router.delete("/admin/delete_user/{user_id}")
